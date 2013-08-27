@@ -9,7 +9,7 @@ from StringIO import StringIO
 from textwrap import dedent
 
 from django.conf import settings
-from django.utils import unittest
+from django.test import TestCase
 
 from mock import ANY, MagicMock, Mock, patch
 
@@ -34,7 +34,7 @@ METHODS = [
 ]
 
 
-class TestL10nExtract(unittest.TestCase):
+class TestL10nExtract(TestCase):
     def test_extract_from_files(self):
         """
         Should be able to extract strings from a specific file.
@@ -114,7 +114,7 @@ class TestL10nExtract(unittest.TestCase):
         callback.assert_called_once_with(testfile[0], METHODS[0][1], ANY)
 
 
-class TestL10nCheck(unittest.TestCase):
+class TestL10nCheck(TestCase):
     def _get_block(self, blocks, name):
         """Out of all blocks, grab the one with the specified name."""
         return next((b for b in blocks if b['name'] == name), None)
@@ -333,7 +333,7 @@ class TestL10nCheck(unittest.TestCase):
         self.assertEqual(open_buffer.getvalue(), good_value)
 
 
-class Testl10nMerge(unittest.TestCase):
+class Testl10nMerge(TestCase):
 
     @patch('lib.l10n_utils.gettext.settings.ROOT', ROOT)
     @patch('lib.l10n_utils.gettext._append_to_lang_file')

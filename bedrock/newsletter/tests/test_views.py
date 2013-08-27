@@ -4,7 +4,6 @@
 import uuid
 
 from django.http import HttpResponse
-from django.test.client import Client
 
 from mock import DEFAULT, patch
 from nose.tools import ok_
@@ -65,10 +64,6 @@ def assert_redirect(response, url):
 
 
 class TestViews(TestCase):
-    def setUp(self):
-        self.client = Client()
-        clear_caches()
-
     def test_hacks_newsletter_frames_allow(self):
         """
         Bedrock pages get the 'x-frame-options: DENY' header by default.
@@ -85,7 +80,6 @@ class TestViews(TestCase):
 @patch('basket.base.request')
 class TestExistingNewsletterView(TestCase):
     def setUp(self):
-        self.client = Client()
         self.token = unicode(uuid.uuid4())
         self.user = {
             'newsletters': [u'mozilla-and-you'],
@@ -406,8 +400,6 @@ class TestConfirmView(TestCase):
     def setUp(self):
         self.token = unicode(uuid.uuid4())
         self.url = reverse('newsletter.confirm', kwargs={'token': self.token})
-        self.client = Client()
-        clear_caches()
 
     def test_normal(self):
         """Confirm works with a valid token"""

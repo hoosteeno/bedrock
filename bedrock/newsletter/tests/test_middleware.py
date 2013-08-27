@@ -1,5 +1,4 @@
 from mock import patch
-from django.test import Client
 from funfactory.urlresolvers import reverse
 from lib import l10n_utils
 from bedrock.mozorg.tests import TestCase
@@ -12,7 +11,6 @@ from pyquery import PyQuery as pq
 class TestNewsletterFooter(TestCase):
     def setUp(self):
         self.view_name = 'firefox.fx'
-        self.client = Client()
 
     def test_country_selected(self):
         """

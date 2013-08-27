@@ -3,9 +3,8 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 from django.conf import settings
+from django.test import RequestFactory, TestCase
 from django.test.utils import override_settings
-from django.utils import unittest
-from test_utils import RequestFactory
 
 import jingo
 from nose.tools import eq_, ok_
@@ -23,7 +22,7 @@ def render(s, context={}):
     return t.render(context)
 
 
-class TestDownloadButtons(unittest.TestCase):
+class TestDownloadButtons(TestCase):
 
     def latest_version(self):
         return product_details.firefox_versions['LATEST_FIREFOX_VERSION']

@@ -3,18 +3,14 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 from django.conf import settings
-from django.test.client import Client
-from django.utils import unittest
+from django.test import TestCase
 
 from mock import patch
 from nose.tools import eq_
 
 
 @patch.object(settings, 'ROOT_URLCONF', 'bedrock.redirects.tests.urls')
-class TestUrlPatterns(unittest.TestCase):
-    def setUp(self):
-        self.client = Client()
-
+class TestUrlPatterns(TestCase):
     def test_redirect(self):
         response = self.client.get('/en-US/gloubi-boulga/')
         eq_(response.status_code, 301)

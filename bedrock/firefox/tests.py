@@ -10,7 +10,7 @@ from urlparse import parse_qsl, urlparse
 
 from django.conf import settings
 from django.test.client import Client
-from django.utils import unittest
+from django.utils.unittest import skip
 
 from funfactory.urlresolvers import reverse
 from mock import ANY, call, Mock, patch
@@ -38,7 +38,6 @@ class TestInstallerHelp(TestCase):
         self.patcher = patch.dict('jingo.env.globals',
                                   download_firefox=self.button_mock)
         self.patcher.start()
-        self.client = Client()
         self.view_name = 'firefox.installer-help'
         with self.activate('en-US'):
             self.url = reverse(self.view_name)
@@ -174,7 +173,6 @@ class TestMobileDetails(TestCase):
 @patch.object(fx_views, 'firefox_details', firefox_details)
 class TestFirefoxAll(TestCase):
     def setUp(self):
-        self.client = Client()
         with self.activate('en-US'):
             self.url = reverse('firefox.all')
 
@@ -204,9 +202,6 @@ class TestFirefoxAll(TestCase):
 
 
 class TestFirefoxPartners(TestCase):
-    def setUp(self):
-        self.client = Client()
-
     @patch('bedrock.firefox.views.settings.DEBUG', True)
     def test_js_bundle_files_debug_true(self):
         """
@@ -306,13 +301,13 @@ class TestFirefoxPartners(TestCase):
         self.assertEqual(response.status_code, 403)
 
 
-class TestLoadDevices(unittest.TestCase):
+class TestLoadDevices(TestCase):
 
     def file(self):
         # where should the test file go?
         return 'TODO'
 
-    @unittest.skip('Please to write test')
+    @skip('Please to write test')
     def test_load_devices(self):
         load_devices(self, self.file(), cacheDevices=False)
 
@@ -415,14 +410,12 @@ class FxVersionRedirectsMixin(object):
 
 class TestWhatsnewRedirect(FxVersionRedirectsMixin, TestCase):
     def setUp(self):
-        self.client = Client()
         with self.activate('en-US'):
             self.url = reverse('firefox.whatsnew', args=['13.0'])
 
 
 class TestFirstrunRedirect(FxVersionRedirectsMixin, TestCase):
     def setUp(self):
-        self.client = Client()
         with self.activate('en-US'):
             self.url = reverse('firefox.firstrun', args=['13.0'])
 
@@ -430,7 +423,6 @@ class TestFirstrunRedirect(FxVersionRedirectsMixin, TestCase):
 class FirefoxMainRedirect(FxVersionRedirectsMixin, TestCase):
     def setUp(self):
         self.url = reverse('firefox')
-        self.client = Client()
 
     @patch.dict(product_details.firefox_versions,
                 LATEST_FIREFOX_VERSION='13.0.5')

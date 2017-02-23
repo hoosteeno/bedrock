@@ -281,6 +281,22 @@ PIPELINE_CSS = {
         ),
         'output_filename': 'css/firefox-dashboard-bundle.css',
     },
+    'firefox_index': {
+        'source_filenames': (
+            'css/firefox/tracking-protection-animation.less',
+            'css/firefox/sync-animation.less',
+            'css/firefox/family-nav.less',
+            'css/firefox/index.less',
+        ),
+        'output_filename': 'css/firefox_index-bundle.css',
+    },
+    'firefox_index_js': {
+        'source_filenames': (
+            'js/firefox/sync.js',
+            'js/firefox/sync-animation.js',
+        ),
+        'output_filename': 'js/firefox_index_js-bundle.js',
+    },
     'firefox_desktop': {
         'source_filenames': (
             'css/firefox/family-nav.less',
@@ -1234,8 +1250,6 @@ PIPELINE_JS = {
             'js/firefox/desktop/common.js',
             'js/firefox/desktop/speed-graph.js',
             'js/base/svg-animation-check.js',
-            'js/firefox/desktop/intro-anim.js',
-            'js/firefox/desktop/index.js',
         ),
         'output_filename': 'js/firefox_desktop_index-bundle.js',
     },

@@ -2,8 +2,8 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-@import '../../sandstone/lib.less';
-@import 'common.less';
+@import '../sandstone/lib.less';
+@import 'desktop/common.less';
 
 #wrapper {
     margin-top: 0;
@@ -25,7 +25,7 @@
 
     .container {
         position: relative;
-        padding: 50px 0 0 0;
+        padding: 50px 0 30px 0;
         min-height: 0;
     }
 
@@ -77,7 +77,7 @@ html[lang^="en"] #sticky-download-desktop .download-link .download-content {
 }
 
 #trust {
-    background: #fcfcfa url('https://www.mozilla.org/media/img/firefox/desktop/bg-pixelfox-new.png') center bottom no-repeat;
+    background: #fcfcfa;
 
     a {
         .open-sans;
@@ -104,6 +104,18 @@ html[lang^="en"] #sticky-download-desktop .download-link .download-content {
         left: 80px;
         width: 500px;
     }
+}
+
+#fast .container, #everywhere .container, #closing .container {
+    min-height: 0;
+}
+
+.sync-anim {
+    position: relative;
+    height: 190px;
+    width: 390px;
+    margin: @baseLine auto;
+    background-image: url('https://www.mozilla.org/media/img/firefox/sync/composite.png');
 }
 
 .cssanimations {
@@ -1013,5 +1025,35 @@ html[lang^="en"] #sticky-download-desktop .download-link .download-content {
             left: auto;
             width: auto;
         }
+    }
+}
+
+.critter-animation {
+    float: right;
+    margin: -30px 0 0 0;
+}
+
+section .container p {
+    text-align: left;
+}
+
+#private {
+    background: #0095dd;
+
+    .container {
+        .container-dark();
+        min-height: 0;
+        padding-bottom: 0;
+
+        a {
+            color: #fff;
+            .open-sans;
+        }
+    }
+    p {
+        max-width: 40%;
+        float: right;
+        text-align: right;
+        margin: 20px 20px 0 0;
     }
 }

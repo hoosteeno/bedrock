@@ -1,0 +1,148 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. #}
+
+{% from "macros.html" import fxfamilynav with context %}
+
+{% extends "firefox/desktop/desktop-base.html" %}
+
+{% block page_title_prefix %}{% endblock %}
+{% block page_title %}
+    {{ _("Free Web Browser Download | Fast, Private, Trusted | Firefox") }}
+{% endblock %}
+{% block page_title_suffix %}{% endblock %}
+
+{% block page_desc %}
+    {{ _("Looking for a better browser? Choose Firefox, the most trusted browser. Faster than ever. Best-in-class privacy. Fiercely independent. Download now!") }}
+{% endblock %}
+
+{% block page_css %}
+  {% stylesheet 'firefox_index' %}
+{% endblock %}
+
+{% block optimizely %}
+  {% if switch('firefox-desktop-optimizely') %}
+    {% include 'includes/optimizely.html' %}
+  {% endif %}
+{% endblock %}
+
+{% block site_header_unwrapped %}
+  {% call fxfamilynav('desktop', 'dark') %}
+    {{ download_firefox(dom_id="sticky-download-desktop", alt_copy=_('Download')) }}
+  {% endcall %}
+{% endblock %}
+
+{% block content %}
+<main role="main" id="main-content">
+  <section id="intro">
+    <div class="container">
+      <div class="intro-content">
+        <h1>
+        {%- if LANG in ['en-GB', 'en-US', 'en-ZA'] -%}
+          {# L10n: Line break below is for wide screen formatting only. #}
+          {{ _('Firefox Web Browser: <br class="wide-br">Fast. Private. Trusted.') }}
+        {%- else -%}
+          {{_ ('Firefox Web Browser: Fast. Private. Trusted.') }}
+        {%- endif -%}
+        </h1>
+
+        <div id="overview-intro-download-wrapper">
+          {{ download_firefox(dom_id="intro_download_desktop") }}
+        </div>
+      {% if l10n_has_tag('firefox_updated') %}
+        <div id="overview-intro-up-to-date">
+          {{ _('Your Firefox is up to date.') }}
+          <a href="https://support.mozilla.org/products/firefox" rel="external">{{ _('Need help with anything?') }}</a>
+        </div>
+      {% endif %}
+      </div>
+    </div><!--/.container-->
+  </section>
+
+  <section id="fast" class="ga-section" data-ga-label="Browse Faster">
+    <div class="container">
+      <h2>{{ _('Browse Faster') }}</h2>
+
+      <p class="lead">
+        {% trans url1='http://mozilla.org', url2='https://blog.mozilla.org/blog/2016/09/20/expanded-multi-process-desktop-android-updates/' %}
+          Firefox is a faster browser than ever before, thanks to a new multi-process architecture that improves browser speed and page-load time. <a href="{{ url1 }}" data-interaction="outbound link">Mozilla</a>, the nonprofit that builds Firefox, literally invented a new programming language to <a href="{{ url2 }}" data-interaction="outbound link">make Firefox faster</a>. Our rapid browser update schedule means Firefox loads faster and is more stable every time you use it. What are you waiting for? <a href="https://www.mozilla.org/firefox/new/?scene=2">Download Firefox now!</a>
+        {% endtrans %}
+      </p>
+    </div><!--/.container-->
+  </section>
+
+  <section id="private" class="private-browsing ga-section" data-ga-label="Private Browsing">
+    <div class="container">
+      <h2>{{ _('Use Firefox for Private Browsing') }}</h2>
+
+        <div class="critter-animation">
+          {% include 'firefox/includes/tracking-protection-animation.html' %}
+      </div>
+        {% trans url1=url('firefox.private-browsing'), url2='https://addons.mozilla.org/en-US/firefox/collections/mozilla/privacy/' %}
+          <p class="lead">
+          What does your browser history say about you? Who has access to your browser history? Plenty of browsers offer an incognito mode, but only Firefox offers private browsing with advanced tracking protection: Just <a href="{{ url1 }}" data-interaction="outbound link"> open a private browsing window</a> and enjoy safe browsing again.</p>
+          <p class="lead">Enhance your private browsing experience with <a href="{{ url2 }}" data-interaction="outbound link">Firefox privacy addons</a> -- for adblocking, managing bookmarks, VPN and more.</p>
+        {% endtrans %}
+    </div><!--/.container-->
+  </section>
+
+  <section id="trust" class="ga-section" data-ga-label="Choose Firefox A Better Browser">
+    <div class="container">
+      <h2>{{ _('Choose Firefox, a Better Browser') }}</h2>
+
+      <p class="lead ga-track-links">
+      {% trans url1='https://blog.mozilla.org/blog/2015/01/27/get-smart-on-international-data-privacy-day/' %}
+        Most browsers are designed to limit your choices and protect a corporate agenda, but not Firefox. Firefox is the only independent web browser, proudly built by a nonprofit on a mission to make the best web browser in the universe. Firefox is a better browser: free from corporate agendas, free from bottom-line calculations, and <a href="https://www.mozilla.org/firefox/new/?scene=2">free to download now</a>.
+      {% endtrans %}
+      </p>
+      <img src="/media/img/home/2016/intro/intro-learning-1000.f9cb264d06f6.jpg" alt="Mozilla is a global community of technologists, thinkers and builders working together to keep the Internet alive and accessible, so people worldwide can be informed contributors and creators of the Web.">
+    </div><!--/.container-->
+  </section>
+
+  <section id="everywhere" class="ga-section" data-ga-label="Use Firefox Everywhere">
+    <div class="container">
+      <h2>{{ _('Use Firefox Everywhere') }}</h2>
+
+      <p class="lead ga-track-links">
+      {% trans url1='https://blog.mozilla.org/blog/2015/01/27/get-smart-on-international-data-privacy-day/' %}
+        Looking for the best browser for desktop and mobile? Firefox is available on <a href="https://www.mozilla.org/firefox/iOS/">iOS</a>, <a href="https://www.mozilla.org/firefox/desktop/">Windows</a>, <a href="https://www.mozilla.org/firefox/android/">Android</a>, <a href="https://www.mozilla.org/firefox/desktop/">Linux</a>, and <a href="https://www.mozilla.org/firefox/desktop/">MacOS</a>. Need a better browser in your language? <a href="https://www.mozilla.org/firefox/all/">Firefox is available in 90 languages</a>. With <a href="https://www.mozilla.org/firefox/sync/">Firefox Sync</a>, you can install Firefox everywhere and share bookmarks across devices. Use Firefox everywhere you browse the web!
+      {% endtrans %}
+      </p>
+      {% include 'firefox/includes/sync-animation.html' %}
+    </div><!--/.container-->
+  </section>
+
+  <section id="closing">
+    <div class="container">
+      <div id="overview-intro-download-wrapper">
+        {{ download_firefox(dom_id="intro_download_desktop") }}
+      </div>
+      {% if l10n_has_tag('firefox_updated') %}
+      <div id="overview-intro-up-to-date">
+        {{ _('Your Firefox is up to date.') }}
+        <a href="https://support.mozilla.org/products/firefox" rel="external">{{ _('Need help with anything?') }}</a>
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+</main>
+{% endblock %}
+
+{% block email_form %}
+<!-- email form removed -->
+{% endblock %}
+
+{% block site_footer %}
+  {% with fx_footer_links=True, current_platform='desktop' %}
+    {% include 'includes/site-footer.html' %}
+  {% endwith %}
+{% endblock %}
+
+{% block js %}
+  <!--[if IE 9]>
+  {% javascript 'matchmedia_addlistener' %}
+  <![endif]-->
+  {% javascript 'firefox_desktop_index' %}
+  {% javascript 'firefox_index_js' %}
+{% endblock %}

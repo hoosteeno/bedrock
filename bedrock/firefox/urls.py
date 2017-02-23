@@ -27,7 +27,8 @@ ios_sysreq_re = sysreq_re.replace('firefox', 'firefox/ios')
 
 
 urlpatterns = (
-    redirect(r'^firefox/$', 'firefox.new', name='firefox', locale_prefix=False),
+    #redirect(r'^firefox/$', 'firefox.new', name='firefox', locale_prefix=False),
+    page('firefox', 'firefox/index.html'),
     url(r'^firefox/(?:%s/)?(?:%s/)?all/$' % (platform_re, channel_re),
         views.all_downloads, name='firefox.all'),
     page('firefox/accounts', 'firefox/accounts.html'),
@@ -85,7 +86,7 @@ urlpatterns = (
         name='firefox.tracking-protection-tour.start'),
 
     # This dummy page definition makes it possible to link to /firefox/ (Bug 878068)
-    url('^firefox/$', views.fx_home_redirect, name='firefox'),
+    #url('^firefox/$', views.fx_home_redirect, name='firefox'),
 
     page('firefox/os', 'firefox/os/index.html'),
 

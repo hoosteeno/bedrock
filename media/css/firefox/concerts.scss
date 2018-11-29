@@ -31,6 +31,18 @@ $concert-pink: #ff2889;
         color: $color-white;
     }
 
+    .mzp-c-hero.mzp-t-dark {
+        background-color: transparent;
+    }
+
+    .mzp-c-hero-title {
+        color: $concert-coral;
+    }
+
+    .mzp-c-hero.mzp-t-firefox:after {
+        display: none;
+    }
+
     .tagline {
         @include text-body-lg;
     }
@@ -43,24 +55,6 @@ $concert-pink: #ff2889;
             @include background-size(360px 616px, 238px 806px);
         }
     }
-}
-
-
-//* -------------------------------------------------------------------------- */
-// Page hero
-
-.mzp-c-hero-title {
-    font-family: sharpsans, sans-serif;
-    color: $concert-coral;
-}
-
-.mzp-c-hero-desc,
-.mzp-c-card-feature-desc {
-    color: $color-white;
-}
-
-.mzp-c-hero.mzp-t-firefox:after {
-    display: none;
 }
 
 
@@ -78,7 +72,6 @@ $concert-pink: #ff2889;
 
     .mzp-c-card-feature-title {
         @include text-display-md;
-        font-family: sharpsans, sans-serif;
     }
 
     .mzp-c-card-feature-desc {
@@ -123,12 +116,10 @@ $concert-pink: #ff2889;
 }
 
 
-
-
 //* -------------------------------------------------------------------------- */
 // Firefox Accounts CTA
 
-@media #{$mq-lg} {
+@media #{$mq-md} {
     .fxa-cta {
         min-height: 300px;
         overflow: hidden;
@@ -145,6 +136,11 @@ $concert-pink: #ff2889;
             top: 50%;
             left: 55%;
             margin-top: -140px;
+        }
+
+        .fxa-content {
+            @include grid-half;
+            margin: 0;
         }
     }
 }
@@ -184,15 +180,8 @@ $concert-pink: #ff2889;
 }
 
 .fxa-title {
-    @include text-display-sm;
-    font-family: sharpsans, sans-serif;
-}
-
-@media #{$mq-lg} {
-    .fxa-content {
-        @include grid-half;
-        margin: 0;
-    }
+    @include open-sans;
+    @include text-display-md;
 }
 
 

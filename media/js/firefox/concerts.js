@@ -6,7 +6,7 @@
     'use strict';
 
     var countdownOne = document.getElementById('countdown-one');
-    var showtimeOne = 'December 11 2018 20:00:00 GMT-0500';
+    var showtimeOne = 'December 11 2018 21:30:00 GMT-0500';
 
     var stateStorageKey = 'fxaOauthState';
     var verifiedStorageKey = 'fxaOauthVerified';
@@ -92,20 +92,12 @@
 
     ConcertPage.updatePageContent = function() {
         if (ConcertPage.shouldShowConcert() === 'false') {
-            ConcertPage.showExcludedContent();
+            // Add styling hook for excluded-specific CSS.
+            document.body.classList.add('state-not-us');
         } else {
-            ConcertPage.showConcertContent();
+            // Add styling hook for us-specific CSS.
+            document.body.classList.add('state-in-us');
         }
-    };
-
-    ConcertPage.showConcertContent = function() {
-        // Add styling hook for us-specific CSS.
-        document.body.classList.add('state-in-us');
-    };
-
-    ConcertPage.showExcludedContent = function() {
-        // Add styling hook for excluded-specific CSS.
-        document.body.classList.add('state-not-us');
     };
 
     ConcertPage.shouldShowConcert = function() {
@@ -180,6 +172,7 @@
         var flowIdField = document.getElementById('flow_id');
         var flowBeginTimeField = document.getElementById('flow_begin_time');
         var stateField = document.getElementById('state');
+        var utmContentField = document.getElementById('utm_content');
         var fxaSignIn = document.getElementById('fxa-sign-in');
 
         // check for an existing state value in a cookie
@@ -195,6 +188,15 @@
             var d = new Date();
             d.setTime(d.getTime() + (cookieDays * 24 * 60 * 60 * 1000));
             Mozilla.Cookies.setItem(stateStorageKey, state, d.toUTCString(), '/');
+        }
+
+        // Update utm_content to indicate the browser
+        if (window.Mozilla.Client.isFirefox) {
+            utmContentField.value = 'firefox';
+            fxaSignIn.href = fxaSignIn.href.replace('utm_content=unknown-browser', 'utm_content=' + utmContentField.value);
+        } else {
+            utmContentField.value = 'not-firefox';
+            fxaSignIn.href = fxaSignIn.href.replace('utm_content=unknown-browser', 'utm_content=' + utmContentField.value);
         }
 
         // put state value in form & append to sign-in link
@@ -291,17 +293,5 @@
             'eLabel': 'How will Mozilla use my email?'
         });
     }, false);
-
-    // Update utm_content to indicate browser
-    var utmContent = document.getElementById('utm_content');
-
-    if (window.Mozilla.Client.isFirefox) {
-        utmContent.value = 'firefox';
-    } else {
-        utmContent.value = 'not-firefox';
-    }
-
-
-
 
 })(window.Mozilla);

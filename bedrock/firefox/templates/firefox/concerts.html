@@ -17,7 +17,7 @@
 {% block content %}
 <main role="main">
   <div class="concert-content">
-    <header class="mzp-c-hero mzp-t-firefox mzp-t-product-firefox">
+    <header class="mzp-c-hero mzp-t-firefox mzp-t-product-firefox mzp-t-dark">
       <div class="mzp-l-content">
         <div class="mzp-c-hero-body">
           <h1 class="mzp-c-hero-title">Here’s to you.<br> Here’s to live music.</h1>
@@ -44,7 +44,7 @@
           {% else %}
             <p class="mzp-c-card-tag countdown" id="countdown-one">Starts in <span class="time days"></span> days, <span class="time hours"></span> hours</p>
           {% endif %}
-            <p class="date"><time datetime="2018-12-11T20:00:00-0500">December 11 at 8pm Eastern</time></p>
+            <p class="date"><time datetime="2018-12-11T20:00:00-0500">December 11 at 9:30pm Eastern</time></p>
             <h2 class="mzp-c-card-feature-title">Phosphorescent</h2>
             <p class="mzp-c-card-feature-desc">Live from DC, get a front row seat for one of the last shows on Phosphorescent’s <cite lang="fr">C’est La Vie</cite> tour.</p>
 
@@ -114,7 +114,7 @@
                 </p>
               </form>
 
-              <p class="signin">Already have a Firefox Account? <a id="fxa-sign-in" href="{{ settings.FXA_OAUTH_ENDPOINT }}/signup?client_id={{ settings.FXA_OAUTH_CLIENT_ID }}&scope=profile&action=email" rel="external">Sign in</a></p>
+              <p class="signin">Already have a Firefox Account? <a id="fxa-sign-in" href="{{ settings.FXA_OAUTH_ENDPOINT }}/signup?utm_source=mozilla.org&utm_campaign=firefox-concert&utm_content=unknown-browser&client_id={{ settings.FXA_OAUTH_CLIENT_ID }}&scope=profile&action=email" rel="external">Sign in</a></p>
             </div>
           </div>{#-- /.form-content --#}
         </div>{#-- /.fxa-content --#}

@@ -24,6 +24,21 @@
     var _geoTimeout;
     var _requestComplete = false;
 
+    // take params from URL and pass through signup button
+    ConcertPage.passThroughParams = function() {
+        var params = window.location.search.slice(1);
+        ['source','medium','campaign','content'].forEach(function(p) {
+            var param = 'utm_' + p;
+            if (params.indexOf(param) >= 0) {
+                var regex = RegExp(param + '=([^\#\&\?]+).*$');
+                if (regex.test(params)) {
+                    var value = params.match(regex)[1];
+                    document.getElementById(param).value = value;
+                }
+            }
+        });
+    };
+
     ConcertPage.getLocation = function() {
         // should /country-code.json be slow to load,
         // just show the regular messaging after 3 seconds waiting.
@@ -124,6 +139,9 @@
     };
 
     ConcertPage.init = function() {
+
+        ConcertPage.passThroughParams();
+
         var cookiesEnabled = typeof Mozilla.Cookies !== 'undefined' || Mozilla.Cookies.enabled();
         var override = ConcertPage.hasGeoOverride();
 

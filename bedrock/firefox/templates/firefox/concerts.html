@@ -16,20 +16,20 @@
 
 {% block content %}
 <main role="main">
-  <header class="mzp-c-hero mzp-t-firefox mzp-t-product-firefox">
-    <div class="mzp-l-content">
-      <div class="mzp-c-hero-body">
-        <h1 class="mzp-c-hero-title">Here’s to you.<br> Here’s to live music.</h1>
-        <div class="mzp-c-hero-desc">
-          <p>Here’s to watching it free, from all kinds of artists, right from Firefox.</p>
+  <div class="concert-content">
+    <header class="mzp-c-hero mzp-t-firefox mzp-t-product-firefox">
+      <div class="mzp-l-content">
+        <div class="mzp-c-hero-body">
+          <h1 class="mzp-c-hero-title">Here’s to you.<br> Here’s to live music.</h1>
+          <div class="mzp-c-hero-desc">
+            <p>Here’s to watching it free, from all kinds of artists, right from Firefox.</p>
+          </div>
         </div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <div class="concert-content">
     <div class="artist-featured mzp-l-content l-content-narrow">
-      <section class="artist-featured mzp-c-card-feature mzp-has-aspect-16-9 mzp-t-firefox mzp-t-dark">
+      <section class="artist-card mzp-c-card-feature mzp-has-aspect-16-9 mzp-t-firefox mzp-t-dark">
         <div class="mzp-c-card-feature-media-wrapper">
           <div class="mzp-c-card-feature-media">
             <img src="{{ static('img/firefox/concerts/phosphorescent.jpg') }}" alt="">
@@ -44,8 +44,9 @@
           {% else %}
             <p class="mzp-c-card-tag countdown" id="countdown-one">Starts in <span class="time days"></span> days, <span class="time hours"></span> hours</p>
           {% endif %}
-            <h2 class="mzp-c-card-feature-title"><time class="date" datetime="2018-12-11T20:00:00-0500">December 11 at 8pm Eastern</time> Phosphorescent</h2>
-            <p class="mzp-c-card-feature-desc">Live from DC, get a front row seat for one of the last shows on Phosphorescent’s <cite>C’est La Vie</cite> tour.</p>
+            <p class="date"><time datetime="2018-12-11T20:00:00-0500">December 11 at 8pm Eastern</time></p>
+            <h2 class="mzp-c-card-feature-title">Phosphorescent</h2>
+            <p class="mzp-c-card-feature-desc">Live from DC, get a front row seat for one of the last shows on Phosphorescent’s <cite lang="fr">C’est La Vie</cite> tour.</p>
 
             {% if switch('firefox-concert-one-live') %}
               <p class="stream-link"><a href="#TBD" class="mzp-c-button mzp-t-primary mzp-t-dark">Watch Now</a></p>
@@ -56,7 +57,7 @@
     </div>
 
     <div class="artist-next mzp-l-content l-content-narrow">
-      <section class="mzp-c-card-feature mzp-has-aspect-16-9 mzp-l-card-feature-right-half mzp-t-firefox mzp-t-dark">
+      <section class="artist-card mzp-c-card-feature mzp-has-aspect-16-9 mzp-l-card-feature-right-half mzp-t-firefox mzp-t-dark">
         <div class="mzp-c-card-feature-media-wrapper">
           <div class="mzp-c-card-feature-media">
             <img src="{{ static('img/firefox/concerts/concert-placeholder.jpg') }}" alt="">
@@ -64,16 +65,16 @@
         </div>
         <div class="mzp-c-card-feature-content">
           <div class="mzp-c-card-feature-content-container">
-            <h2 class="mzp-c-card-feature-title"><time class="date" datetime="2019-01">January 2019</time> To be announced</h2>
+            <p class="date"><time datetime="2019-01">January 2019</time></p>
+            <h2 class="mzp-c-card-feature-title"> To be announced</h2>
             <p class="mzp-c-card-feature-desc">Check back here to find out who’s playing next!</p>
           </div>
         </div>
       </section>
     </div>
 
-
     <section class="fxa-cta">
-      <div class="mzp-l-content l-content-narrow">
+      <div class="mzp-l-content">
         <div class="fxa-content">
           <h2 class="fxa-title">Get concert reminders.</h2>
 
@@ -123,9 +124,18 @@
   </div>{#-- .concert-content --#}
 
   <section class="excluded-content">
+    <header class="mzp-c-hero mzp-t-firefox mzp-t-product-firefox">
+      <div class="mzp-l-content">
+        <div class="mzp-c-hero-body">
+          <h1 class="mzp-c-hero-title">Our apologies.</h1>
+          <div class="mzp-c-hero-desc">
+            <p>We are not able to stream these concerts outside the US.</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
     <div class="mzp-l-content l-content-narrow">
-      <h2>Our apologies.</h2>
-      <p class="tagline">We are not able to stream these concerts outside the US.</p>
       <p>But sign up for our newsletter to learn about Firefox happenings in your area.</p>
 
       <div class="mzp-c-newsletter">

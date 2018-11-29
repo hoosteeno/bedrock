@@ -67,15 +67,52 @@ $concert-pink: #ff2889;
 //* -------------------------------------------------------------------------- */
 // Artist cards
 
-.mzp-c-card-feature-title {
-    @include text-display-md;
-    font-family: sharpsans, sans-serif;
+.artist-card {
+    color: $color-white;
 
     .date {
         @include text-display-xs;
-        font-weight: normal;
-        display: block;
+        font-weight: bold;
         margin-bottom: $spacing-sm;
+    }
+
+    .mzp-c-card-feature-title {
+        @include text-display-md;
+        font-family: sharpsans, sans-serif;
+    }
+
+    .mzp-c-card-feature-desc {
+        color: $color-white;
+    }
+
+    .mzp-c-card-tag {
+        @include background-size(22px 22px);
+        @include bidi(((padding-left, $spacing-xl, 0),(padding-right, 0, $spacing-xl)));
+        background-position: left top;
+        background-repeat: no-repeat;
+        font-weight: bold;
+        margin-bottom: $spacing-lg;
+
+        &.countdown {
+            background-image: url('/media/img/firefox/concerts/icon-alarm.svg');
+            display: none;
+
+            .js & {
+                display: block; // we need JS for the timer
+            }
+        }
+
+        &.live {
+            background-image: url('/media/img/firefox/concerts/icon-live.svg');
+        }
+
+        &.ended {
+            background-image: url('/media/img/firefox/concerts/icon-ended.svg');
+        }
+    }
+
+    .stream-link {
+        margin-top: $spacing-lg;
     }
 }
 
@@ -85,35 +122,7 @@ $concert-pink: #ff2889;
     }
 }
 
-.mzp-c-card-tag {
-    @include background-size(22px 22px);
-    @include bidi(((padding-left, $spacing-xl, 0),(padding-right, 0, $spacing-xl)));
-    background-position: left top;
-    background-repeat: no-repeat;
-    font-weight: bold;
-    margin-bottom: $spacing-lg;
 
-    &.countdown {
-        background-image: url('/media/img/firefox/concerts/icon-alarm.svg');
-        display: none;
-
-        .js & {
-            display: block; // we need JS for the timer
-        }
-    }
-
-    &.live {
-        background-image: url('/media/img/firefox/concerts/icon-live.svg');
-    }
-
-    &.ended {
-        background-image: url('/media/img/firefox/concerts/icon-ended.svg');
-    }
-}
-
-.stream-link {
-    margin-top: $spacing-lg;
-}
 
 
 //* -------------------------------------------------------------------------- */

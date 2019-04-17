@@ -51,9 +51,12 @@ $image-path: '/media/protocol/img';
     }
 }
 
-.state-fxa-not-fx strong.show-fxa-not-fx {
-    display: inline;
-    margin: 0;
+.show-fxa-unsupported,
+.state-fxa-not-fx {
+    .feature-availability {
+        display: inline;
+        margin: 0;
+    }
 }
 
 
